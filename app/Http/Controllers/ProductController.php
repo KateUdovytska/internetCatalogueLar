@@ -103,7 +103,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //Todo
+//        $product = Product::find($id);
+//        return view('admin.edit', compact('product'));
     }
 
     /**

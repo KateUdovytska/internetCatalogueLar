@@ -80,12 +80,11 @@
                                 </form>
                             </td>
                             <td>
-                                <div>{{ $product->web_site }}</div>
-                                <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST">
+                                <form action="{{ route('admin.products.edit', $product->id) }}" method="POST">
                                     {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                    <button type="submit" class="btn btn-danger">
-                                        <i class="fa fa-btn fa-trash"></i>Удалить
+                                    {{ method_field('GET') }}
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fa fa-pencil" aria-hidden="true"> Редактировать</i>
                                     </button>
                                 </form>
                             </td>
