@@ -22,7 +22,6 @@ Route::group(['prefix'=>'admin'],function (){
         return view('layouts.default');
     });
 
-
     Route::resource('products', 'ProductController');
 
 

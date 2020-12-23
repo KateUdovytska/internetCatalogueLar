@@ -6,7 +6,7 @@ use App\Model\Producer;
 use Illuminate\Http\Request;
 use App\Model\Product;
 use App\Http\Requests;
-
+use Illuminate\Support\Facades\Auth;
 
 
 class ProductController extends Controller
@@ -119,10 +119,11 @@ class ProductController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
+        $product = Product::find($id);
         $this->authorize('destroy', $product);
         $product->delete();
-        return redirect(route('products.index'));
+        return redirect(route('admin.products.index'));
     }
 }
