@@ -55,28 +55,33 @@ class ProductController extends Controller
             $request,
             ['name' => 'required|max:255',
              'description' => 'required',
-             'price' => 'required|max:255',
+             'price' => 'required',
              'producer' => 'required|max:255',
-             'producer_web' => 'required|max:255',
+             'web_site' => 'required|max:255',
             ]
         );
         $user = $request->user();
-//        $producer = $request->producer();
+        //$producer = $request->producer(); //Todo change to create
 //        $user->products()->create(
 //            [
 //                'name' => $request->name,
 //            ]
         //);
-//        $producer = new Producer();
-//        $producer->producer = $request->producer;  //check name
-//        $producer->web_site = $request->web_site;
-//        $producer->save();
-//
-//        $product = new Product();
-//        $product->name = $request->name;
-//        $product->description = $request->description;
-//        $product->user_id = $user->id;
+        $producer = new Producer();
+        $producer->name = $request->producer;
+        $producer->web_site = $request->web_site;
+        $producer->save();
 
+
+        $product = new Product();
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->user_id = $user->id;
+        $product->producer_id = $producer->id;
+        $product->save();
+
+        return redirect(route('admin.products.index'));
     }
 
     /**
