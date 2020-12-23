@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{--    @include('common.errors')--}}
+    @include('common.errors')
     <div class="panel-heading text-center">
         <h2>@lang('messages.addPr')</h2>
     </div>
