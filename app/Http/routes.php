@@ -11,9 +11,23 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/','Controller@index', function () {
+
+    return view('layouts.default');
 });
 
+Route::group(['prefix'=>'admin'],function (){
+    Route::get('/','ProductController@index', function () {
+
+        return view('layouts.default');
+    });
+
+
+    Route::resource('products', 'ProductController');
+
+
+});
+Route::get('locale/{locale}', 'Controller@changeLocale')->name('locale');
 
 Route::auth();
+
