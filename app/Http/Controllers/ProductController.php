@@ -54,10 +54,10 @@ class ProductController extends Controller
         $this->validate(
             $request,
             ['name' => 'required|max:255',
-             'description' => 'required',
-             'price' => 'required',
-             'producer' => 'required|max:255',
-             'web_site' => 'required|max:255',
+                'description' => 'required',
+                'price' => 'required',
+                'producer' => 'required|max:255',
+                'web_site' => 'required|max:255',
             ]
         );
         $user = $request->user();
@@ -103,8 +103,13 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-//        $product = Product::find($id);
-//        return view('admin.edit', compact('product'));
+        $product = Product::find($id);
+        $producer = Producer::find($product->producer_id);
+        return view('admin.edit',
+            [
+                'product' => $product,
+                'producer' => $producer,
+            ]);
     }
 
     /**
@@ -116,7 +121,18 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //TODO
+        $product = Product::find($id);
+        $producer = Producer::find($product->producer_id);
+        $producer->name = $request->producer;
+        $producer->web_site = $request->web_site;
+        $producer->update();
+
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->update();
+
+        return redirect(route('admin.products.index'));
     }
 
     /**
