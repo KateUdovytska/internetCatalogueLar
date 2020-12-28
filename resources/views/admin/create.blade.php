@@ -19,8 +19,7 @@
         <div class="form-group">
             <label for="description" class="col-sm-3 control-label">@lang('messages.description')</label>
             <div class="col-sm-6">
-                <textarea class="form-control" name="description" id="description" required>
-                </textarea>
+                <textarea class="form-control" name="description" id="description" required></textarea>
             </div>
         </div>
         <div class="form-group">
@@ -41,7 +40,6 @@
                 <input type="text" name="web_site" id="producer_web" class="form-control" required>
             </div>
         </div>
-
         <!-- Кнопка добавления задачи -->
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-6">
