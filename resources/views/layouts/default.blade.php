@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>@lang('messages.catalogue')</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"
@@ -31,48 +31,85 @@
             width: 120px;
             margin: -30px 0;
         }
-        .productTable{
+
+        .productTable {
             width: 80%;
             height: auto;
             margin-left: 10%;
             background-color: #f5f5f5;
 
         }
-        .thead-dark{
+
+        .thead-dark {
             background-color: #3daeb9;
             color: white;
         }
 
+        .dropdown {
+            font-size: large;
+            color: #ffffff;
+            background-color: #3daeb9;
+            border-radius: 100px;
+        }
+
+        #user-colour {
+            color: #ffffff;
+        }
+
+        footer {
+            color: #ffffff;
+            background: #3daeb9;
+            padding: 17px 0 18px 0;
+            height: 50px;
+        }
     </style>
 </head>
 <body id="app-layout">
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
         <div class="navbar-header">
-
-
             <!-- Branding Image -->
             <div class="navbar-left">
                 <a class="navbar" href="{{ url('/') }}">
-                <img src="https://i.pinimg.com/originals/7f/69/3e/7f693e0563f7334a1683db3deeeb89f3.png" alt="logo"
-                     class="logo">
+                    <img src="https://i.pinimg.com/originals/7f/69/3e/7f693e0563f7334a1683db3deeeb89f3.png" alt="logo"
+                         class="logo">
                 </a>
             </div>
         </div>
-
+        <div>
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="{{route('locale','ru')}}">Ru</a></li>
-                                <li><a href="{{route('locale','en')}}">En</a></li>
-
+                <!-- Right Side Of Navbar -->
+                <li><a href="{{route('locale','ru')}}">Ru</a></li>
+                <li><a href="{{route('locale','en')}}">En</a></li>
+                <!-- Authentication Links -->
+                @if (Auth::guest())
+                    <li><a href="{{ url('/login') }}">@lang('validation.attributes.login')</a></li>
+                    <li><a href="{{ url('/register') }}">@lang('validation.attributes.register')</a></li>
+                @else
+                    <li class="dropdown">
+                        <a href="#" id="user-colour" class="dropdown-toggle " data-toggle="dropdown" role="button"
+                           aria-expanded="false">
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ url('/admin/logout') }}"><i
+                                            class="fa fa-btn fa-sign-out"></i>@lang('validation.attributes.logout')</a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
             </ul>
-        </ul>
         </div>
+
     </div>
+
 </nav>
 
 @yield('content')
-
+<footer class="navbar-fixed-bottom text-center">
+    &copy; jun-2020
+</footer>
 <!-- JavaScripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"
         integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb"
