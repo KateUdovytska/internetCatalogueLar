@@ -108,6 +108,17 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'Name',
+        'username' => 'Username',
+        'email' => 'E-Mail',
+        'password' => 'Password',
+        'password_confirmation' => 'Confirm password ',
+        'remember_me' => 'Remember me',
+        'login' => 'Login',
+        'forgot_pass' => 'Forgot your password?',
+        'register' => 'Register',
+        'logout' => 'Logout',
+    ],
 
 ];

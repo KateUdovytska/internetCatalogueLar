@@ -12,8 +12,5 @@ return [
     'namePr' => 'Name',
     'producer_web' => 'Web-site',
     'addPr' => 'Add Product',
-//    'price' => 'Цена',
-//    'price' => 'Цена',
-//    'price' => 'Цена',
-//    'price' => 'Цена',
+    'savePr' => 'Save Product',
 ];
