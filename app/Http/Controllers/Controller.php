@@ -15,8 +15,9 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
 
-    public function changeLocale($locale){
-        session(['locale'=>$locale]);
+    public function changeLocale($locale)
+    {
+        session(['locale' => $locale]);
         App::setLocale($locale);
         return redirect()->back();
     }
