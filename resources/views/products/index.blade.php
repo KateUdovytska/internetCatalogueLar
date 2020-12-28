@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('welcome')
 @section('content')
 
 
@@ -35,21 +35,12 @@
                                         {{ $product->producer->name }}
                                     </a></div>
                             </td>
-{{--                            <td>--}}
-{{--                                <div>{{ $product->web_site }}</div>--}}
-{{--                                <form action="{{ route('tasks.delete', $product->id) }}" method="POST">--}}
-{{--                                    {{ csrf_field() }}--}}
-{{--                                    {{ method_field('DELETE') }}--}}
-{{--                                    <button type="submit" class="btn btn-danger">--}}
-{{--                                        <i class="fa fa-btn fa-trash"></i>Удалить--}}
-{{--                                    </button>--}}
-{{--                                </form>--}}
-{{--                            </td>--}}
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
             </div>
+            <div class="text-center">{{ $products->links() }}</div>
         </div>
     @endif
 @endsection

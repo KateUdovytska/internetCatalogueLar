@@ -93,6 +93,7 @@
                     </tbody>
                 </table>
             </div>
+            <div class="text-center">{{ $products->links() }}</div>
         </div>
     @endif
 @endsection

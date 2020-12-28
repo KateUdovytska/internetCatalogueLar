@@ -23,7 +23,7 @@ class Controller extends BaseController
 
     public function index(Request $request)
     {
-        $products = Product::all();
+        $products = Product::paginate(5);
 
         return view('products.index',
             [
