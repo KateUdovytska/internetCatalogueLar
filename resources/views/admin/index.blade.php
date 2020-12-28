@@ -1,26 +1,7 @@
 @extends('layouts.default')
 @section('content')
 
-    <div>
-    <!-- Right Side Of Navbar -->
-    <ul class="nav navbar-nav navbar-right">
-        <!-- Authentication Links -->
-        @if (Auth::guest())
-            <li><a href="{{ url('/login') }}">Login</a></li>
-            <li><a href="{{ url('/register') }}">Register</a></li>
-        @else
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                    {{ Auth::user()->name }} <span class="caret"></span>
-                </a>
 
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="{{ url('/admin/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                </ul>
-            </li>
-        @endif
-    </ul>
-    </div>
 
 
     <form action="{{ route('admin.products.create') }}" method="post" class="form-horizontal">
@@ -28,7 +9,7 @@
         {{method_field('GET')}}
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-6">
-                <button type="submit" class="btn btn-default">
+                <button type="submit" class="btn btn-info">
                     <i class="fa fa-plus"></i> @lang('messages.newProduct')
                 </button>
             </div>
