@@ -11,20 +11,17 @@
 |
 */
 
-Route::get('/','Controller@index', function () {
-
-    return view('layouts.default');
+Route::get('/', 'Controller@index', function () {
+    return view('welcome')->name('home');
 });
 
-Route::group(['prefix'=>'admin'],function (){
-    Route::get('/','ProductController@index', function () {
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', 'ProductController@index', function () {
 
         return view('layouts.default');
     });
 
     Route::resource('products', 'ProductController');
-
-
 });
 Route::get('locale/{locale}', 'Controller@changeLocale')->name('locale');
 
