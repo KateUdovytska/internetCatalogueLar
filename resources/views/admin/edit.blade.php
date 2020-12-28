@@ -7,8 +7,9 @@
         <h2>@lang('messages.addPr')</h2>
     </div>
     <!-- Форма новой продукции -->
-    <form action="{{ route('admin.products.update') }}" method="POST" class="form-horizontal">
+    <form action="{{ route('admin.products.update', $product->id) }}" method="POST" class="form-horizontal">
     {{ csrf_field() }}
+    {{ method_field('PATCH') }}
     <!-- Имя задачи -->
         <div class="form-group">
             <label for="product" class="col-sm-3 control-label">@lang('messages.namePr')</label>
@@ -19,7 +20,7 @@
         <div class="form-group">
             <label for="description" class="col-sm-3 control-label">@lang('messages.description')</label>
             <div class="col-sm-6">
-                <textarea class="form-control" name="description" id="description" required> value="{{$product->description}}"
+                <textarea class="form-control" name="description" id="description" required> {{$product->description}}"
                 </textarea>
             </div>
         </div>
@@ -32,21 +33,22 @@
         <div class="form-group">
             <label for="producer" class="col-sm-3 control-label">@lang('messages.producer')</label>
             <div class="col-sm-6">
-                <input type="text" name="producer" id="producer" class="form-control" value="{{$producer->name}}" required>
+                <input type="text" name="producer" id="producer" class="form-control" value="{{$producer->name}}"
+                       required>
             </div>
         </div>
         <div class="form-group">
             <label for="producer_web" class="col-sm-3 control-label">@lang('messages.producer_web')</label>
             <div class="col-sm-6">
-                <input type="text" name="web_site" id="producer_web" class="form-control" value="{{$product->web_site}}" required>
+                <input type="text" name="web_site" id="producer_web" class="form-control"
+                       value="{{$producer->web_site}}" required>
             </div>
         </div>
-
         <!-- Кнопка добавления задачи -->
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-6">
                 <button type="submit" class="btn btn-default">
-                    <i class="fa fa-plus"></i> @lang('messages.addPr')
+                    <i class="fa fa-plus"></i> @lang('messages.savePr')
                 </button>
             </div>
         </div>
